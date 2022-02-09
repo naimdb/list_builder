@@ -1,0 +1,25 @@
+{
+  "name": "list_builder",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with Fastify-CLI.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naimdb/list_builder.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/naimdb/list_builder/issues"
+  },
+  "homepage": "https://github.com/naimdb/list_builder#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "fastify": "^3.27.1",
+    "fastify-mongodb": "^4.1.1",
+    "fastify-plugin": "^3.0.1"
+  }
+}
