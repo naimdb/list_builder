@@ -1,0 +1,29 @@
+datasource db {
+    provider = "mongodb"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = ["mongoDb"]
+}
+
+model Unit {
+    id      String  @id @default(dbgenerated()) @map("_id") @db.ObjectId
+    name    String
+    type    String
+    power   Power[]
+}
+
+model Weapon {
+    id      String  @id @default(dbgenerated()) @map("_id") @db.ObjectId
+    name    String
+}
+
+model Power {
+    id      String  @id @default(dbgenerated()) @map("_id") @db.ObjectId
+    name    String
+    desc    String
+    unit    Unit    @relation(fields: [unitId], references: [id])
+    unitId  String
+}
