@@ -6,6 +6,6 @@ dotenv.config()
 
 async function dbConnector (app, options) {
     app.register(fastifyMongo, {
-        url: env('URL_MONGODB')
+        url: env('DATABASE_URL')
     })
 }
