@@ -1,31 +1,21 @@
-const fastify = require('fastify')
-const { PrismaClient } = require('@prisma/client')
+const fastify = require('fastify')({ logger: true })
+    , dotenv = require('dotenv')
 
-const app = fastify({ logger: true })
-const prisma = new PrismaClient()
+dotenv.config()
 
-async function main() {
-    await prisma.$connect()
-}
+fastify.register(require('fastify-mongodb'), {
+    forceClose: true,
+    url: process.env.DATABASE_URL,
+})
 
-app.register(require('./routes/first'))
-app.register(require('./db-connector'))
+fastify.get('/', function (req, reply) {
+    reply.send('Hello World !')
+})
 
-const start = async () => {
-    try {
-        await app.listen(3000)
-    } catch (err) {
-        app.log.error(err)
+fastify.listen(3000, function (err, address) {
+    if (err) {
+        fastify.log.error(err)
         process.exit(1)
     }
-}
-
-main()
-    .catch((e) => {
-        throw e
-    })
-    .finally(async () => {
-        await prisma.$disconnect()
-    })
-
-start()
+    fastify.log.info(`server listening on ${address}`)
+})

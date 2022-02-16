@@ -7,9 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "fastify start app.js"
   },
-  "prisma": {
-      "seed" : "node prisma/seed.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/naimdb/list_builder.git"
@@ -21,12 +18,11 @@
   },
   "homepage": "https://github.com/naimdb/list_builder#readme",
   "dependencies": {
-    "@prisma/client": "^3.9.2",
     "dotenv": "^16.0.0",
     "fastify": "^3.27.1",
     "fastify-cli": "^2.15.0",
     "fastify-mongodb": "^4.1.1",
     "fastify-plugin": "^3.0.1",
-    "prisma": "^3.9.2"
+    "mongodb": "^4.3.1"
   }
 }
